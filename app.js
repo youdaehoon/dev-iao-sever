@@ -10,6 +10,7 @@ server.use(routes);
 
 routes.post("/ogtag", async (req, res) => {
   const { url } = req.body;
+  console.log(url);
   const result = await ogs.getOg(url);
   console.log(result);
   res.send(result);
