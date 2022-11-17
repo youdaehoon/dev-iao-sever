@@ -2,6 +2,7 @@ const ogs = require("open-graph-scraper");
 
 const getOg = async (url) => {
   let res;
+  console.log(ogs);
   await ogs({ url })
     .then((data) => {
       const { error, result, response } = data;
