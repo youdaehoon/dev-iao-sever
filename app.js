@@ -15,6 +15,6 @@ routes.post("/ogtag", async (req, res) => {
   res.send(result);
 });
 
-server.listen(3334, () => {
+server.listen("http://54.180.93.82", () => {
   console.log("server open");
 });
