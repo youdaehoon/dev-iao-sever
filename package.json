@@ -1,0 +1,18 @@
+{
+  "name": "practice_es5",
+  "version": "1.0.0",
+  "description": "dev-iao 서비스 es5문법으로 만들기위한 프로젝트",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "open-graph-scraper": "^5.0.0"
+  }
+}
