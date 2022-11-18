@@ -1,12 +1,11 @@
 const express = require("express");
 const cor = require("cors");
-const routes = express.Router();
 const ogs = require("./service/ogs.js");
-const { PrivateNetworks } = require("aws-sdk");
 
-const users = require("./service/User.js");
+const userService = require("./service/User.js");
 
 const server = express();
+const routes = express.Router();
 server.use(cor());
 server.use(express.json());
 server.use(routes);
@@ -20,28 +19,33 @@ routes.post("/ogtag", async (req, res) => {
 });
 
 routes.get("/listUsers", async (req, res) => {
-  const result = await users.userService.ListUesrs();
+  const result = await userService.User.listUsers();
+  // console.log(result);
   res.send(result.Users);
 });
 
 routes.post("/confirm", async (req, res) => {
   const { name } = req.body;
+  console.log(name);
   try {
-    const result = await users.userService.adminConfirmSignUp(name);
-    res.json(result);
+    const result = await userService.User.confirm(name);
+    res.send(result);
+    // console.log(result);
   } catch (err) {
-    console.log(err);
+    console.log("err in controller", err);
   }
 });
-routes.delete("/user", async (req, res) => {
-  const { name } = req.body;
-  try {
-    const result = await users.userService.AdminDeleteUser(name);
-    res.json(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
+
+// routes.delete("/user", async (req, res) => {
+//   const { name } = req.body;
+
+//   try {
+//     const result = await users.userService.AdminDeleteUser(name);
+//     res.json(result);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 server.listen(3334, () => {
   console.log("server open");
