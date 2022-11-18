@@ -20,6 +20,18 @@ const userService = {
       console.log("error" + err);
     }
   },
+  async adminConfirmSignUp(userName) {
+    const params = {
+      UserPoolId: userPoolId,
+      Username: userName,
+    };
+    try {
+      const data = await cog.adminConfirmSignUp(params);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 module.exports.userService = userService;

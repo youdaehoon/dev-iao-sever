@@ -24,6 +24,16 @@ routes.get("/listUsers", async (req, res) => {
   res.send(result.Users);
 });
 
-server.listen(3333, () => {
+routes.post("confirm", async (req, res) => {
+  const { name } = req.body;
+  try {
+    const result = await users.userService.adminConfirmSignUp(name);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+server.listen(3334, () => {
   console.log("server open");
 });
