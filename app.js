@@ -24,10 +24,19 @@ routes.get("/listUsers", async (req, res) => {
   res.send(result.Users);
 });
 
-routes.post("confirm", async (req, res) => {
+routes.post("/confirm", async (req, res) => {
   const { name } = req.body;
   try {
     const result = await users.userService.adminConfirmSignUp(name);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+  }
+});
+routes.delete("/user", async (req, res) => {
+  const { name } = req.body;
+  try {
+    const result = await users.userService.AdminDeleteUser(name);
     res.json(result);
   } catch (err) {
     console.log(err);

@@ -32,6 +32,18 @@ const userService = {
       console.log(err);
     }
   },
+  async AdminDeleteUser(Username) {
+    const params = {
+      UserPoolId: userPoolId,
+      Username: userName,
+    };
+    try {
+      const data = await cog.adminDeleteUser(params);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 module.exports.userService = userService;
