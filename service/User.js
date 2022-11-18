@@ -32,48 +32,19 @@ const confirm = async (name) => {
   });
 };
 
+const AdminDeleteUser = async (name) => {
+  const params = {
+    UserPoolId: userPoolId,
+    Username: name,
+  };
+  const data = await cog.adminDeleteUser(params, (err, data) => {
+    if (err) console.log(err, err.stack);
+    else return data;
+  });
+};
+
 module.exports.User = {
   listUsers,
   confirm,
+  AdminDeleteUser,
 };
-// const userService = {
-//   async ListUesrs() {
-//     const params = {
-//       UserPoolId: userPoolId,
-//       Limit: 10,
-//     };
-
-//     try {
-//       const data = await cog.listUsers(this.params).promise();
-//       return data;
-//     } catch (err) {
-//       console.log("error" + err);
-//     }
-//   },
-//   async confirm(userName) {
-//     const confirmParams = {
-//       UserPoolId: userPoolId,
-//       Username: userName,
-//     };
-//     try {
-//       const data = await cog.adminConfirmSignUp(confirmParams);
-//       return data;
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   },
-//   // async AdminDeleteUser(Username) {
-//   //   const params = {
-//   //     UserPoolId: userPoolId,
-//   //     Username: Username,
-//   //   };
-//   //   try {
-//   //     const data = await cog.adminDeleteUser(params);
-//   //     return data;
-//   //   } catch (err) {
-//   //     console.log(err);
-//   //   }
-//   // },
-// };
-
-// module.exports.userService = userService;
